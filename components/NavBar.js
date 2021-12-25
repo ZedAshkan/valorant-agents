@@ -6,7 +6,7 @@ export default function NavBar() {
       <Link href="/"><a className="text-3xl mx-3">Valorant Agents</a></Link>
       <div>
       <Link href="/about"><a className="mx-3">About</a></Link>
-      <a href="https://github.com/zedashkan" target="_blank" className="mx-3">github</a>
+      <a href="https://github.com/zedashkan" target="_blank"  rel="noreferrer" className="mx-3">github</a>
       </div>
     </nav>
   )

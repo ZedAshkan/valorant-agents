@@ -29,7 +29,7 @@ export default function AgentInfoPage({ agent }) {
 
       <div className="row row-cols-2">
         <div className="col">
-          <Image src={agent.bustPortrait} width={2048} height={2048} />
+          <Image src={agent.bustPortrait} width={2048} height={2048} alt={agent.displayName} />
         </div>
         <div className="col">
           <div className="flex flex-col">
@@ -55,7 +55,7 @@ export default function AgentInfoPage({ agent }) {
                 {agent.abilities.map(item => (
                   <div className="col flex mb-4" key={item.uuid}>
                     <div className="flex flex-col text-center">
-                      <Image src={item.displayIcon} width={100} height={100} />
+                      <Image src={item.displayIcon} width={100} height={100} alt={item.displayName} />
                       <span className="font-bold min-w-[100px]">{item.displayName}</span>
                     </div>
                     <span className="m-3">{item.description}</span>

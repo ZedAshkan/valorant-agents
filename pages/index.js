@@ -14,7 +14,6 @@ export const getStaticProps = async () => {
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import NavBar from "../components/NavBar"
 
 export default function Home({ agents }) {
   return (
@@ -41,9 +40,7 @@ export default function Home({ agents }) {
 
                       <div className="mt-3 flex items-center gap-2">
                         <Image src={role.displayIcon} width={18} height={18} alt={agent.displayName} />
-                        <span>
-                          {agent.displayName}
-                        </span>
+                        <span>{agent.displayName}</span>
                       </div>
                     </div>
                     </a>

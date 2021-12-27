@@ -8,7 +8,7 @@ export const getStaticProps = async () => {
     props: {
       agents,
     },
-    revalidate: 10,
+    revalidate: 60,
   }
 }
 
@@ -30,9 +30,12 @@ export default function Home({ agents }) {
           {
             agents.map((agent) => {
               let role = { ...agent.role }
+              if(agent.displayName === 'KAY/O'){
+                agent.displayName = 'KAY-O'
+              }
               return (
                 <div className="col" key={agent.uuid}>
-                  <Link href={`/agents/${agent.uuid}`}>
+                  <Link href={`/agents/${agent.displayName}`}>
                     <a>
                       <div className="bg-rose-600 border-4 border-rose-800 rounded-lg shadow-lg shadow-rose-600/50 p-3 hover:scale-105 transition">
                         <div className="!border-4 !border-rose-800">

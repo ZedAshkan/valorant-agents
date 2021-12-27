@@ -3,16 +3,33 @@ export const getStaticPaths = async () => {
   const data = await res.json()
   const list = data.data
   const agents = list.filter(item => item.uuid !== 'ded3520f-4264-bfed-162d-b080e2abccf9')
-  const paths = agents.map(item => ({ params: { uuid: item.uuid } }))
+  const paths = agents.map(item => {
+    if (item.displayName === 'KAY/O') {
+      item.displayName = 'KAY-O'
+    }
+    return { params: { uuid: item.displayName } }
+  })
+
   return {
     paths,
     fallback: false,
   }
 }
 
-export const getStaticProps = async ({ params }) => {
-  const res = await fetch(`https://valorant-api.com/v1/agents/${params.uuid}`)
+export const getStaticProps = async ({params}) => {
+  const full = await fetch(`https://valorant-api.com/v1/agents`)
+  const dataFull = await full.json()
+  const listFull = dataFull.data
+  const agentsFull = listFull.filter(item => item.uuid !== 'ded3520f-4264-bfed-162d-b080e2abccf9')
+  const agentFull = agentsFull.filter(item => {
+    if (item.displayName === 'KAY/O') {
+      item.displayName = 'KAY-O'
+    }
+    return item.displayName === params.uuid
+  })
+  const res = await fetch(`https://valorant-api.com/v1/agents/${agentFull[0].uuid}`)
   const data = await res.json()
+  // console.log(data)
   const agent = data.data
   return {
     props: {

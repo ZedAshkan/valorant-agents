@@ -6,7 +6,7 @@ export default function NotFoundPage() {
   useEffect(() => {
     setTimeout(() => {
       router.push("/")
-    }, 5000)
+    }, 6000)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

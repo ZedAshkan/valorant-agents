@@ -14,7 +14,7 @@ export const getStaticPaths = async () => {
     }
     return { params: { agent: item.displayName } }
   })
-  
+
   return {
     paths,
     fallback: 'blocking',
@@ -30,8 +30,8 @@ export const getStaticProps = async ({ params }) => {
     return item.displayName === params.agent
   })
 
-  if(agent.length === 0){
-    return { notFund: true }
+  if (agent.length === 0) {
+    return { notFound: true }
   }
 
   return {

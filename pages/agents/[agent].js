@@ -1,40 +1,43 @@
-export const getStaticPaths = async () => {
+const getData = async () => {
   const res = await fetch('https://valorant-api.com/v1/agents')
   const data = await res.json()
   const list = data.data
   const agents = list.filter(item => item.uuid !== 'ded3520f-4264-bfed-162d-b080e2abccf9')
+  return agents
+}
+
+export const getStaticPaths = async () => {
+  const agents = await getData()
   const paths = agents.map(item => {
     if (item.displayName === 'KAY/O') {
       item.displayName = 'KAY-O'
     }
-    return { params: { uuid: item.displayName } }
+    return { params: { agent: item.displayName } }
   })
-
+  
   return {
     paths,
-    fallback: false,
+    fallback: 'blocking',
   }
 }
 
-export const getStaticProps = async ({params}) => {
-  const full = await fetch(`https://valorant-api.com/v1/agents`)
-  const dataFull = await full.json()
-  const listFull = dataFull.data
-  const agentsFull = listFull.filter(item => item.uuid !== 'ded3520f-4264-bfed-162d-b080e2abccf9')
-  const agentFull = agentsFull.filter(item => {
+export const getStaticProps = async ({ params }) => {
+  const agents = await getData()
+  const agent = agents.filter(item => {
     if (item.displayName === 'KAY/O') {
       item.displayName = 'KAY-O'
     }
-    return item.displayName === params.uuid
+    return item.displayName === params.agent
   })
-  const res = await fetch(`https://valorant-api.com/v1/agents/${agentFull[0].uuid}`)
-  const data = await res.json()
-  // console.log(data)
-  const agent = data.data
+
+  if(agent.length === 0){
+    return { notFund: true }
+  }
+
   return {
     props: {
-      agent,
-    },
+      agent: agent[0],
+    }
   }
 }
 
@@ -46,6 +49,7 @@ export default function AgentInfoPage({ agent }) {
     <>
       <Head>
         <title>{agent.displayName}</title>
+        <link rel="icon" href={agent.role.displayIcon} />
       </Head>
       <div className="container mx-auto text-white">
         <div>
@@ -78,7 +82,7 @@ export default function AgentInfoPage({ agent }) {
 
                 <div className="row row-cols-1 mx-3">
                   {agent.abilities.map(item => (
-                    <div className="col flex mb-4" key={item.uuid}>
+                    <div className="col flex mb-4" key={item.slot}>
                       <div className="flex flex-col text-center">
                         {
                           item.displayIcon &&

@@ -8,7 +8,7 @@ export const getStaticProps = async () => {
     props: {
       agents,
     },
-    revalidate: 60,
+    revalidate: 600,
   }
 }
 
@@ -23,14 +23,14 @@ export default function Home({ agents }) {
         <title>Valorant Agents</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+
       <div className="container mx-auto text-white leading-none">
 
-        <div className="row mx-0 row-cols-2 md:row-cols-5 g-3">
+        <div className="row row-cols-2 md:row-cols-5 g-3">
           {
             agents.map((agent) => {
               let role = { ...agent.role }
-              if(agent.displayName === 'KAY/O'){
+              if (agent.displayName === 'KAY/O') {
                 agent.displayName = 'KAY-O'
               }
               return (
@@ -41,7 +41,6 @@ export default function Home({ agents }) {
                         <div className="!border-4 !border-rose-800">
                           <Image src={agent.displayIconSmall} width={256} height={256} alt={agent.displayName} />
                         </div>
-
                         <div className="mt-3 flex items-center gap-2">
                           <Image src={role.displayIcon} width={18} height={18} alt={agent.displayName} />
                           <span>{agent.displayName}</span>

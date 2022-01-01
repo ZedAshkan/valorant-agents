@@ -2,13 +2,11 @@ export const getStaticProps = async () => {
   const res = await fetch('https://valorant-api.com/v1/agents')
   const data = await res.json()
   const list = data.data
-  const sovas = list.filter(agent => agent.displayName === 'Sova')
   const agents = list.filter(item => item.uuid !== 'ded3520f-4264-bfed-162d-b080e2abccf9')
 
   return {
     props: {
       agents,
-      sovas,
     },
     revalidate: 600,
   }
@@ -18,8 +16,7 @@ import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 
-export default function Home({ agents , sovas}) {
-  console.log(sovas)
+export default function AgentsList({ agents }) {
   return (
     <>
       <Head>

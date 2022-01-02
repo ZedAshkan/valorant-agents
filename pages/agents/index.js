@@ -8,7 +8,7 @@ export const getStaticProps = async () => {
     props: {
       agents,
     },
-    revalidate: 600,
+    revalidate: 1800,
   }
 }
 
@@ -21,7 +21,8 @@ export default function AgentsList({ agents }) {
     <>
       <Head>
         <title>Valorant Agents</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="keywords" content="valorant, valorant info, valorant agents" />
+        <link rel="icon" href="/valorant.png" />
       </Head>
 
       <div className="container mx-auto text-white leading-none">

@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 import Head from "next/head"
 
 export default function HomePage() {
@@ -8,7 +7,8 @@ export default function HomePage() {
       <Head>
         <title>Valorant Info</title>
         <meta name="description" content="Valorant agents weapons and maps info" />
-        {/* valorant icon */}
+        <meta name="keywords" content="valorant, valorant info, valorant maps, valorant weapons, valorant agents" />
+        <link rel="icon" href="/valorant.png" />
       </Head>
       <div className="container mx-auto text-white">
         <div className="mt-5 row row-cols-1 md:row-cols-2 g-4">

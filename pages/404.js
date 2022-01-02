@@ -1,5 +1,6 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
+import Head from "next/head"
 
 export default function NotFoundPage() {
   const router = useRouter()
@@ -18,19 +19,27 @@ export default function NotFoundPage() {
     // }, 1000)
     // return () => clearInterval(interval)
     setTimeout(() => {
-      setCount(count - 1)
+      if (count > 0) {
+        setCount(count - 1)
+      }
     }, 1000)
   }, [count])
 
   return (
-    <div className="text-white text-center text-3xl">
-      <span className="block text-6xl font-extrabold m-5">404</span>
-      <div>
-        this page is not exist
+    <>
+      <Head>
+        <title>Not Found</title>
+
+      </Head>
+      <div className="text-white text-center text-3xl">
+        <span className="block text-6xl font-extrabold m-5">404</span>
+        <div>
+          this page is not exist
+        </div>
+        <div className="text-xl font-thin mt-4">
+          you will be redirected to home page in {count} seconds
+        </div>
       </div>
-      <div className="text-xl font-thin mt-4">
-        you will be redirected to home page in {count} seconds
-      </div>
-    </div>
+    </>
   )
 }

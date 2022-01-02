@@ -49,6 +49,7 @@ export default function AgentInfoPage({ agent }) {
     <>
       <Head>
         <title>{agent.displayName}</title>
+        <meta name="keywords" content={`valorant, valorant info, valorant agents, valorant ${agent.displayName}, agent ${agent.displayName}, ${agent.displayName}`} />
         <link rel="icon" href={agent.role.displayIcon} />
       </Head>
       <div className="container mx-auto text-white">

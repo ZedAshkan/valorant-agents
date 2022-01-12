@@ -1,3 +1,7 @@
+export const getStaticProps = async () => {
+  return { notFound: true }
+}
+
 export default function SkinsList() {
   return (
     <>

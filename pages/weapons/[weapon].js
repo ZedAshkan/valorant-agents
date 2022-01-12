@@ -17,8 +17,6 @@ export const getStaticPaths = async () => {
   }
 }
 
-import { useState } from "react"
-
 export const getStaticProps = async ({ params }) => {
   const weapons = await getData()
   const list = weapons.filter(item => item.displayName === params.weapon)

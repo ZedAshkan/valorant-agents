@@ -7,11 +7,11 @@ export default function NotFoundPage() {
   useEffect(() => {
     setTimeout(() => {
       router.push("/")
-    }, 6000)
+    }, 7000)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const [count, setCount] = useState(6)
+  const [count, setCount] = useState(7)
 
   useEffect(() => {
     // const interval = setInterval(() => {
@@ -31,7 +31,7 @@ export default function NotFoundPage() {
         <title>Not Found</title>
 
       </Head>
-      <div className="text-white text-center text-3xl">
+      <div className="text-center text-3xl mb-64">
         <span className="block text-6xl font-extrabold m-5">404</span>
         <div>
           this page is not exist

@@ -1,7 +1,7 @@
-import '../styles/globals.css'
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
-import Head from 'next/head'
+import "../styles/globals.css";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -10,12 +10,12 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/valorant.png" />
       </Head>
-      <div className='container mx-auto'>
+      <div className="container mx-auto">
         <NavBar />
       </div>
       <Component {...pageProps} />
       <Footer />
     </>
-  )
+  );
 }
-export default MyApp
+export default MyApp;
